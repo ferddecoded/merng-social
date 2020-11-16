@@ -6,7 +6,7 @@ const connect = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })
-    .then(() => console.log(`Mongo running at ${process.env.MONGO_DB_URI}`))
+    .then(() => console.log("MongoDB Connected"))
     .catch((err) => console.log(err));
 };
 
@@ -18,8 +18,6 @@ const connectDB = (handler) => async (req, res) => {
 };
 
 const db = mongoose.connection;
-db.once("ready", () =>
-  console.log(`connected to mongo on ${process.env.MONGO_DB_URI}`)
-);
+db.once("ready", () => console.log("MongoDB Connected"));
 
 export default connectDB;

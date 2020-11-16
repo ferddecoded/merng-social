@@ -1,4 +1,5 @@
-import { model, Schema } from "mongoose";
+import { Schema } from "mongoose";
+import schemaHandler from "../../../../utils/schema-handler";
 
 const postSchema = new Schema({
   body: String,
@@ -24,4 +25,4 @@ const postSchema = new Schema({
   },
 });
 
-export default model("post", postSchema);
+export default schemaHandler("post", postSchema);
