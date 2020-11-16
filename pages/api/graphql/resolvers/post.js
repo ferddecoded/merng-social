@@ -12,7 +12,14 @@ export default {
           .find()
           .sort({ createdAt: -1 })
           .toArray();
-        posts = posts.map((post) => ({ ...post, id: post._id }));
+        posts = posts.map((post) => ({
+          ...post,
+          id: post._id,
+          comments: post.comments.map((comment) => ({
+            ...comment,
+            id: comment._id,
+          })),
+        }));
         return posts;
       } catch (err) {
         throw new Error(err);
