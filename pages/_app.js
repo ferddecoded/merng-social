@@ -5,6 +5,10 @@ import { setContext } from "@apollo/client/link/context";
 import { ViewportProvider } from "../context/Viewport";
 import fetch from "isomorphic-unfetch";
 
+import "../styles/globals.css";
+import "semantic-ui-css/semantic.min.css";
+import { Container } from "semantic-ui-react";
+
 const httpLink = createHttpLink({
   uri: "api/graphql",
   fetch,
@@ -27,13 +31,13 @@ export const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-import "../styles/globals.css";
-
 function MyApp({ Component, pageProps }) {
   return (
     <ApolloProvider client={client}>
       <ViewportProvider>
-        <Component {...pageProps} />
+        <Container>
+          <Component {...pageProps} />
+        </Container>
       </ViewportProvider>
     </ApolloProvider>
   );
